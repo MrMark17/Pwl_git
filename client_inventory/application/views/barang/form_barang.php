@@ -36,7 +36,7 @@
 	});
 
 	function sendDataPost() {
-		var link = 'http://localhost/backend_inventory/barang/create_action/';
+		var link = 'http://localhost/20.01.4473/Pwl_git/backend_inventory/Barang/create_action';
 
 		var dataForm ={};
 		var allInput = $('.form-user-input');
