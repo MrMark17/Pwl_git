@@ -9,6 +9,10 @@ class Barang_model extends CI_Model {
 		$this->db ->from('barang');
 		return $this->db ->get();
 	}
+	public function insert_data($data)
+	{
+		$this->db ->insert('barang', $data);
+	}
 }
 
 ?>
