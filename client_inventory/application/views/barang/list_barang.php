@@ -21,11 +21,18 @@
 				var objData = JSON.parse(data);
 
 				$('#tabel_barang').html(objData.konten);
+				reload_event();
 			},
 			error: function (jqXHR, textStatus, errorMsg) {
 				alert('Error : ' + errorMsg);
 			}
 		})
+	}
+	function reload_event(){
+		$('.linkEditBarang').on('click', function(){
+			var hashClean = this.hash.replace('#','');
+			loadMenu ('<?= base_url('barang/form_edit/') ?>' + hashClean);
+		});
 	}
 
 	loadKonten('http://localhost/20.01.4473/Pwl_git/backend_inventory/index.php/Barang/list_barang')
