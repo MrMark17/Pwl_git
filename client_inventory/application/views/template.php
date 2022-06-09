@@ -234,7 +234,7 @@
                     var objData = JSON.parse(data);
 
                     $('#kontenTemplate').html(objData.konten);
-                    $('title').html(objData.title);
+                    $('title').html(objData.titel);
                     $('.page-breadcrumb .page-title').html(objData.titel);
                 },
                 error: function (jqHXR, textStatus, errorMsg) {
