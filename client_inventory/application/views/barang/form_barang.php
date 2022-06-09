@@ -13,7 +13,7 @@
 					<div class="form-group">
 						<label class="col-md-12">Deskripsi</label>
 						<div class="col-md-12">
-							<textarea class="form-control form-control-line form-user-input" id="deskripsi" rows="5" placeholder="Ceritakan barang"></textarea>
+							<textarea class="form-control form-control-line form-user-input" name="deskripsi" id="deskripsi" rows="5" placeholder="Ceritakan barang"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
