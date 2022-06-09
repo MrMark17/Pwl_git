@@ -45,7 +45,7 @@
 			dataForm[val['name']] = val['value'];
 		});
 
-		$ajax(link, {
+		$.ajax(link, {
 			type: 'POST',
 			data: dataForm,
 			success: function (data, status, xhr){
