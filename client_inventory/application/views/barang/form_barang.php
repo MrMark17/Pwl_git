@@ -28,3 +28,34 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$('#formBarang').on('submit', function (e){
+		e.preventDefault();
+		sendDataPost();
+	});
+
+	function sendDataPost() {
+		var link = 'http://localhost/backend_inventory/barang/create_action/';
+
+		var dataForm ={};
+		var allInput = $('.form-user-input');
+
+		$.each(allInput, function (i, val){
+			dataForm[val['name']] = val['value'];
+		});
+
+		$ajax(link, {
+			type: 'POST',
+			data: dataForm,
+			success: function (data, status, xhr){
+				var data_str = JSON.parse(data);
+				alert(data_str['pesan']);
+				loadMenu('<?= base_url('barang') ?>');
+			},
+			error: function (jqXHR, textStatus, errorMsg){
+				alert('Error : ' + errorMsg);
+			}
+		});
+	}
+</script>
