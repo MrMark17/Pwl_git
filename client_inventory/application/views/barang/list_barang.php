@@ -1,5 +1,6 @@
 <div class="row">
 	<div class="col-12">
+	<h4>List Data Barang</h4><br>
 		<div class="card">
 			<div class="card-body">
 				<a href="#" onclick="loadMenu('<?= base_url('barang/form_create')?>')" class="btn btn-primary">Tambah Data Barang</a>
