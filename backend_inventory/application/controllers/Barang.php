@@ -93,7 +93,7 @@ class Barang extends CI_Controller {
 
 		$this->Barang_model->hapus_data($id_barang);
 
-		if ($this->db->trans_status() === FALSE {
+		if ($this->db->trans_status() === FALSE) {
 			$this->db->trans_rollback();
 			$data_output = array('sukses' => 'tidak', 'pesan' => 'Gagal Hapus Data Barang');
 		} else {
