@@ -39,9 +39,9 @@
 		// var link = 'http://localhost/20.01.4473/Pwl_git/backend_inventory/Barang/create_action/';
 		<?php 
 		if ($titel == 'Form Edit Data Barang'){
-			echo "var link = 'http://localhost/20.01.4473/Pwl_git/backend_inventory/Barang/update_action/';";
+			echo "var link = 'http://localhost:8080/Pwl_git/backend_inventory/Barang/update_action/';";
 		} else {
-			echo "var link = 'http://localhost/20.01.4473/Pwl_git/backend_inventory/Barang/create_action/';";
+			echo "var link = 'http://localhost:8080/Pwl_git/backend_inventory/Barang/create_action/';";
 		}
 		?>
 		var dataForm ={};
@@ -65,7 +65,7 @@
 		});
 	}
 	function getDetail(id_barang){
-		var link = 'http://localhost/20.01.4473/Pwl_git/backend_inventory/Barang/detail?id_barang='+id_barang;
+		var link = 'http://localhost:8080/Pwl_git/backend_inventory/Barang/detail?id_barang='+id_barang;
 
 		$.ajax(link,{
 			type: 'GET',

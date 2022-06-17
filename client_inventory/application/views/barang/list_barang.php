@@ -35,5 +35,5 @@
 		});
 	}
 
-	loadKonten('http://localhost/20.01.4473/Pwl_git/backend_inventory/index.php/Barang/list_barang')
+	loadKonten('http://localhost:8080/Pwl_git/backend_inventory/index.php/Barang/list_barang')
 </script>
