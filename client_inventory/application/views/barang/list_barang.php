@@ -40,7 +40,7 @@
 		});
 	}
 	function hapusData(id_barang) {
-		var url = 'http://localhost:8080/Pwl_git/backend_inventory/Barang/delete_data?id_barang='+id_barang;
+		var url = 'http://localhost:8080/Pwl_git/backend_inventory/Barang/soft_delete_data?id_barang='+id_barang;
 
 		$.ajax(url, {
 			type:'GET',

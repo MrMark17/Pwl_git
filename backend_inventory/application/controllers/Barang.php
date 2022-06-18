@@ -102,7 +102,25 @@ class Barang extends CI_Controller {
 		}
 		echo json_encode($data_output);
 	}
+	public function soft_delete_data()
+	{
+		$this->db ->trans_start();
+
+		$id_barang = $this->input ->get('id_barang');
+
+		$this->Barang_model ->soft_delete_data($id_barang);
+
+		if ($this->db ->trans_status() === FALSE) {
+			$this->db ->trans_rollback();
+			$data_output = array('sukses' => 'tidak', 'pesan' => 'Gagal Hapus Data Barang');
+		} else {
+			$this->db ->trans_commit();
+			$data_output = array('sukses' => 'ya', 'pesan' => 'Berhasil Hapus Data Barang');
+		}
+		echo json_encode($data_output);
+	}
 }
+
 ?>
 
 
