@@ -16,7 +16,7 @@
 					</div>
 					<div class="col-md-3">
 						<label>Maksimal Stok</label>
-						<input type="number" name="cari_stock" id="cari_stock" class="form-control form-input-cari">
+						<input type="number" name="cari_stok" id="cari_stok" class="form-control form-input-cari">
 					</div>
 					<div class="col-md-3">
 						<br>
