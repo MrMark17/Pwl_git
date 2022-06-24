@@ -17,6 +17,16 @@
 						</div>
 					</div>
 					<div class="form-group">
+					<div class="col-md-12">Upload Foto</div>
+					<div class="col-md-12">
+						<input type="file" name="file" id="file">
+						<!-- Drag and Drop Container -->
+						<div class="upload-area" id="uploadfile">
+							<h2>Drag and Drop file here <br> or <br> Click to select file</h2>
+						</div>
+					</div>
+					</div>
+					<div class="form-group">
 						<div class="col-sm-12">
 							<input class="form-user-input" type="hidden" name="id_barang" id="id_barang" value="">
 							<input type="hidden" class="form-user-input" name="stok" id="stok" value="0">
