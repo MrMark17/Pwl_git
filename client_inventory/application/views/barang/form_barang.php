@@ -1,3 +1,12 @@
+<style type="text/css">
+	.upload-area{
+		width: 70%;
+		height: 350px;
+		border: 2px solid lightgray;
+	}
+</style>
+
+
 <div class="row">
 	<div class="col-12">
 		<div class="card">
