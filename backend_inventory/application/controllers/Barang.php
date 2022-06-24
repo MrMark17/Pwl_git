@@ -119,6 +119,36 @@ class Barang extends CI_Controller {
 		}
 		echo json_encode($data_output);
 	}
+	public function cari_barang()
+	{
+		$cari_nama = $this->input->post('cari_nama');
+		$cari_deskripsi = $this->input->post('cari_desk');
+		$cari_stok = $this->input->post('cari_stok');
+
+		$data_barang = $this->Barang_model ->get_barang($cari_nama, $cari_deskripsi, $cari_stok);
+
+		$konten = '<tr>
+			<td>Nama</td>
+			<td>Deskripsi</td>
+			<td>Stok</td>
+			<td>Aksi</td>
+		</tr>';
+
+		foreach ($data_barang ->result() as $key => $value) {
+			$konten .= '<tr>
+							<td>'.$value ->nama_barang.'</td>
+							<td>'.$value ->deskripsi.'</td>
+							<td>'.$value ->stok.'</td>
+							<td>Read | <a href="#'.$value->id_barang.'"class="linkHapusBarang">Hapus</a> | <a href="#'.$value->id_barang.'"class="linkEditBarang">Edit</a></td>
+						</tr>';
+		}
+
+		$data_json = array(
+			'konten' => $konten,
+		);
+
+		echo json_encode($data_json);
+	}
 }
 
 ?>
