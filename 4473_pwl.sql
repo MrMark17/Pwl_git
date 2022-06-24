@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jun 2022 pada 05.16
+-- Waktu pembuatan: 24 Jun 2022 pada 10.46
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `web_inventory`
+-- Database: `4473_pwl`
 --
 
 -- --------------------------------------------------------
@@ -45,16 +45,19 @@ CREATE TABLE `barang` (
   `id_barang` int(11) NOT NULL,
   `nama_barang` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
-  `stok` int(11) NOT NULL
+  `stok` int(11) NOT NULL,
+  `status_delete` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `deskripsi`, `stok`) VALUES
-(1, 'Nutrisari Jeruk rasa Mangga', 'Enak pokok e', 20),
-(2, 'Jasjus', 'Hemmmm segerrr', 0);
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `deskripsi`, `stok`, `status_delete`) VALUES
+(1, 'Nutrisari Jeruk rasa Mangga', 'Enak pokok e', 20, 0),
+(2, 'Jasjus', 'Hemmmm segerrr', 0, 0),
+(4, 'Kursi DPR', 'enak kaliii', 0, 1),
+(5, 'Laptop', 'Laptop gaming', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -150,7 +153,8 @@ ALTER TABLE `admin`
 -- Indeks untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  ADD PRIMARY KEY (`id_barang`);
+  ADD PRIMARY KEY (`id_barang`),
+  ADD KEY `status_delete` (`status_delete`);
 
 --
 -- Indeks untuk tabel `barang_masuk`
@@ -204,7 +208,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_masuk`
