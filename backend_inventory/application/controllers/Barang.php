@@ -15,6 +15,7 @@ class Barang extends CI_Controller {
 			<td>Nama</td>
 			<td>Deskripsi</td>
 			<td>Stok</td>
+			<td>Foto</td>
 			<td>Aksi</td>
 		</tr>';
 		
@@ -23,6 +24,7 @@ class Barang extends CI_Controller {
 			<td>'.$value -> nama_barang.'</td>
 			<td>'.$value -> deskripsi.'</td>
 			<td>'.$value -> stok.'</td>
+			<td><img src="'.base_url().'/foto/'.$value->id_barang.'/'.$value->foto_produk.'" width="50"></td>
 			<td>Aksi | <a href="#'.$value->id_barang.'"class="linkHapusBarang">Hapus</a> | Read | <a href="#'.$value->id_barang.'"class="linkEditBarang"</a>Edit</a></td>
 		</tr>'; 
 		}
@@ -42,6 +44,12 @@ class Barang extends CI_Controller {
 		);
 		
 		$this->Barang_model ->insert_data($arr_input);
+
+		$id_barang = $this->db->insert_id();
+
+		if ($_FILES != null) {
+			$this->upload_foto($id_barang, $_FILES);
+		}
 
 		if ($this->db ->trans_status() === false) {
 			$this->db ->trans_rollback();
@@ -75,6 +83,10 @@ class Barang extends CI_Controller {
 		);
 
 		$this->Barang_model ->update_data($id_barang, $arr_input);
+
+		if ($_FILES != null) {
+			$this->upload_foto($id_barang, $_FILES);
+		}
 
 		if ($this->db ->trans_status() === FALSE) {
 			$this->db ->trans_rollback();
@@ -149,6 +161,43 @@ class Barang extends CI_Controller {
 
 		echo json_encode($data_json);
 	}
+
+	public function upload_foto($id_barang, $files)
+	{
+		$gallerPath = realpath(APPPATH.'../foto');
+		$path = $gallerPath.'/'.$id_barang;
+
+		if (!is_dir($path)){
+			mkdir($path, 0777, TRUE);
+		}
+
+		$konfigurasi = array(
+			'allowed_types' => 'jpg|png|jpeg',
+			'upload_path' => $path,
+			'overwrite' => true
+		);
+
+		$this->load->library('upload'.$konfigurasi);
+
+		$_FILES['file']['name'] = $files['file']['name'];
+		$_FILES['file']['type'] = $files['file']['type'];
+		$_FILES['file']['tmp_name'] = $files['file']['tmp_name'];
+		$_FILES['file']['error'] = $files['file']['error'];
+		$_FILES['file']['size'] = $files['file']['size'];
+
+		if ($this->upload->do_upload('file')) {
+			$data_barang = array(
+				'foto_produk' => $this->upload->data('file_name')
+			);
+			$this->Barang_model->update_data($id_barang, $data_barang);
+
+			return 'Success Upload';
+		} else {
+			return 'Error Upload';
+		}
+
+	}
+	
 }
 
 ?>
