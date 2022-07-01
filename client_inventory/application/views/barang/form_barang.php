@@ -141,13 +141,16 @@
 		$.each(allInput, function (i, val){
 			dataForm[val['name']] = val['value'];
 		});
-
+		
+		var dataForm = new FormData()
 		var file =$('#file')[0].files[0];
 		dataForm.append('file', file);
 
 		$.ajax(link, {
 			type: 'POST',
 			data: dataForm,
+			processData: false,
+    		contentType: false,
 			success: function (data, status, xhr){
 				var data_str = JSON.parse(data);
 				alert(data_str['pesan']);
