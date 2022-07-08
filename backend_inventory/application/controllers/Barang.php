@@ -24,7 +24,7 @@ class Barang extends CI_Controller {
 			<td>'.$value -> nama_barang.'</td>
 			<td>'.$value -> deskripsi.'</td>
 			<td>'.$value -> stok.'</td>
-			<td><img src="'.base_url().'/foto/'.$value->id_barang.'/'.$value->foto_produk.'" width="50"></td>
+			<td><img src="'.base_url().'assets/foto/'.$value->id_barang.'/'.$value->foto_produk.'" width="50"></td>
 			<td>Aksi | <a href="#'.$value->id_barang.'"class="linkHapusBarang">Hapus</a> | Read | <a href="#'.$value->id_barang.'"class="linkEditBarang"</a>Edit</a></td>
 		</tr>'; 
 		}
@@ -40,7 +40,7 @@ class Barang extends CI_Controller {
 
 		$arr_input = array(
 			'nama_barang' => $this->input ->post('nama_barang'),
-			'deskripsi' => $this->input ->post('deskripsi'),
+			'deskripsi' => $this->input ->post('deskripsi')
 		);
 		
 		$this->Barang_model ->insert_data($arr_input);
@@ -164,27 +164,19 @@ class Barang extends CI_Controller {
 
 	public function upload_foto($id_barang, $files)
 	{
-		$gallerPath = realpath(APPPATH.'../foto');
+
+		$gallerPath = realpath('././assets/foto');
 		$path = $gallerPath.'/'.$id_barang;
 
 		if (!is_dir($path)){
 			mkdir($path, 0777, TRUE);
 		}
 
-		$konfigurasi = array(
-			'allowed_types' => 'jpg|png|jpeg',
-			'upload_path' => $path,
-			'overwrite' => true
-		);
+		$config['upload_path']          = $path;
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['overwrite']			= true;
 
-		$this->load->library('upload'.$konfigurasi);
-
-		$_FILES['file']['name'] = $files['file']['name'];
-		$_FILES['file']['type'] = $files['file']['type'];
-		$_FILES['file']['tmp_name'] = $files['file']['tmp_name'];
-		$_FILES['file']['error'] = $files['file']['error'];
-		$_FILES['file']['size'] = $files['file']['size'];
-
+		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('file')) {
 			$data_barang = array(
 				'foto_produk' => $this->upload->data('file_name')
@@ -195,7 +187,6 @@ class Barang extends CI_Controller {
 		} else {
 			return 'Error Upload';
 		}
-
 	}
 	
 }

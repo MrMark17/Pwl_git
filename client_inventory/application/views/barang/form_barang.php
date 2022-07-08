@@ -58,6 +58,7 @@
 					</div>
 					<div class="form-group">
 					<div class="col-md-12">Upload Foto</div>
+
 					<div class="col-md-12">
 						<input type="file" name="file" id="file">
 						<!-- Drag and Drop Container -->
@@ -127,6 +128,12 @@
 		$(".upload-area > h2").text("File yang dipilih: " + file.name)
 	});
 
+	<?php 
+	if ($titel == 'Form Edit Data Barang'){
+		echo 'getDetail('.$id_barang.');';
+	}
+	?>
+
 	function sendDataPost() {
 		<?php 
 		if ($titel == 'Form Edit Data Barang'){
@@ -135,25 +142,23 @@
 			echo "var link = 'http://localhost:8080/Pwl_git/backend_inventory/Barang/create_action/';";
 		}
 		?>
-		var dataForm ={};
-		var allInput = $('.form-user-input');
 
-		$.each(allInput, function (i, val){
-			dataForm[val['name']] = val['value'];
+		var dataForm = new FormData();
+		var allInput = $('.form-user-input');
+		$.each(allInput, function (i, val) {
+			dataForm.append(val['name'], val['value']);
 		});
-		
-		var dataForm = new FormData()
-		var file =$('#file')[0].files[0];
+		var file = $('#file')[0].files[0];
 		dataForm.append('file', file);
 
 		$.ajax(link, {
 			type: 'POST',
 			data: dataForm,
+			contentType: false,
 			processData: false,
-    		contentType: false,
+    		dataType: 'json',
 			success: function (data, status, xhr){
-				var data_str = JSON.parse(data);
-				alert(data_str['pesan']);
+				alert('Data Berhasil dimasukkan.');
 				loadMenu('<?= base_url('barang') ?>');
 			},
 			error: function (jqXHR, textStatus, errorMsg){
@@ -184,9 +189,4 @@
 			}
 		});
 	}
-	<?php 
-	if ($titel == 'Form Edit Data Barang'){
-		echo 'getDetail('.$id_barang.');';
-	}
-	?>
 </script>

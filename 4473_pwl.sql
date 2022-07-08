@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jun 2022 pada 10.46
+-- Waktu pembuatan: 08 Jul 2022 pada 05.54
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -46,18 +46,19 @@ CREATE TABLE `barang` (
   `nama_barang` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `stok` int(11) NOT NULL,
-  `status_delete` tinyint(1) NOT NULL DEFAULT 0
+  `status_delete` tinyint(1) NOT NULL DEFAULT 0,
+  `foto_produk` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `deskripsi`, `stok`, `status_delete`) VALUES
-(1, 'Nutrisari Jeruk rasa Mangga', 'Enak pokok e', 20, 0),
-(2, 'Jasjus', 'Hemmmm segerrr', 0, 0),
-(4, 'Kursi DPR', 'enak kaliii', 0, 1),
-(5, 'Laptop', 'Laptop gaming', 0, 0);
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `deskripsi`, `stok`, `status_delete`, `foto_produk`) VALUES
+(1, 'Nutrisari Jeruk rasa Manggaff', 'Enak pokok e', 20, 0, 'jasjus.JPG'),
+(2, 'Jasjus', 'Hemmmm segerrr', 0, 0, 'jasjus.JPG'),
+(5, 'Laptop', 'Laptop gaming', 0, 0, 'Rog.JPG'),
+(10, 'Papan Tulis', 'dsgfd', 0, 0, 'papan_tulis.JPG');
 
 -- --------------------------------------------------------
 
@@ -116,18 +117,6 @@ INSERT INTO `departemen` (`id_departemen`, `nama_departemen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `galeri_foto`
---
-
-CREATE TABLE `galeri_foto` (
-  `id_galeri_foto` int(11) NOT NULL,
-  `id_barang` int(11) NOT NULL,
-  `nama_file` varchar(150) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `stok_bulanan`
 --
 
@@ -181,13 +170,6 @@ ALTER TABLE `departemen`
   ADD PRIMARY KEY (`id_departemen`);
 
 --
--- Indeks untuk tabel `galeri_foto`
---
-ALTER TABLE `galeri_foto`
-  ADD PRIMARY KEY (`id_galeri_foto`),
-  ADD KEY `id_barang` (`id_barang`);
-
---
 -- Indeks untuk tabel `stok_bulanan`
 --
 ALTER TABLE `stok_bulanan`
@@ -208,7 +190,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_masuk`
@@ -227,12 +209,6 @@ ALTER TABLE `barang_pinjam`
 --
 ALTER TABLE `departemen`
   MODIFY `id_departemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT untuk tabel `galeri_foto`
---
-ALTER TABLE `galeri_foto`
-  MODIFY `id_galeri_foto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `stok_bulanan`
@@ -259,12 +235,6 @@ ALTER TABLE `barang_pinjam`
   ADD CONSTRAINT `barang_pinjam_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
   ADD CONSTRAINT `barang_pinjam_ibfk_2` FOREIGN KEY (`id_departemen`) REFERENCES `departemen` (`id_departemen`),
   ADD CONSTRAINT `barang_pinjam_ibfk_3` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
-
---
--- Ketidakleluasaan untuk tabel `galeri_foto`
---
-ALTER TABLE `galeri_foto`
-  ADD CONSTRAINT `galeri_foto_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
 
 --
 -- Ketidakleluasaan untuk tabel `stok_bulanan`
