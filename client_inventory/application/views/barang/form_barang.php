@@ -163,7 +163,7 @@
 			processData: false,
     		dataType: 'json',
 			success: function (data, status, xhr){
-				data_str = data
+				var data_str = data
 				alert(data_str['pesan']);
 				loadMenu('<?= base_url('barang') ?>');
 			},
