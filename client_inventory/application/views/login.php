@@ -42,7 +42,7 @@ base_url('assets/xtreme_admin_lite/assets/images/favicon.png') ?>"
                     <div class="form-group">
                       <label for="example-email" class="col-md-12">Email</label>
                       <div class="col-md-12">
-                        <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line form-user-input" name="email" id="example-email" />
+                        <input type="email" placeholder="Input your email" class="form-control form-control-line form-user-input" name="email" id="example-email" />
                       </div>
                     </div>
                     <div class="form-group">
@@ -74,7 +74,7 @@ base_url('assets/xtreme_admin_lite/assets/images/favicon.png') ?>"
 		})
 
 		function checkLogin() {
-			var link = "#"
+			var link = "http://localhost:8080/pwl_git/backend_inventory/index.php/User/check_login"
 
 			var dataForm = {};
 			var allInput = $('.form-user-input');
@@ -88,7 +88,6 @@ base_url('assets/xtreme_admin_lite/assets/images/favicon.png') ?>"
 				data : dataForm,
 				success : function (data, status, xhr) {
 					var data_str = JSON.parse(data);
-
 					alert(data_str['pesan']);
 
 					if (data_str['sukses'] == 'Ya') {

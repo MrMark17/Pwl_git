@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/xtreme_admin_lite/assets/images/favicon.png">
     <title>Responsi Pemrograman Web Lanjut</title>
     <!-- Custom CSS -->
     <link href="<?= base_url('assets/xtreme_admin_lite/') ?>css/style.min.css" rel="stylesheet">
