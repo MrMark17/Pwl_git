@@ -91,11 +91,7 @@ base_url('assets/xtreme_admin_lite/assets/images/favicon.png') ?>"
 					alert(data_str['pesan']);
 
 					if (data_str['sukses'] == 'Ya') {
-<<<<<<< HEAD
 						setSession(data_str['user']);
-=======
-						location.replace('http://localhost:8080/Pwl_git/client_inventory/index.php/home')
->>>>>>> origin/fitur_login
 					}
 				},
 				error: function (jqXHR, textStatus, errorMsg) {
