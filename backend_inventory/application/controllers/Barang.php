@@ -142,19 +142,21 @@ class Barang extends CI_Controller {
 		$data_barang = $this->Barang_model ->get_barang($cari_nama, $cari_deskripsi, $cari_stok);
 
 		$konten = '<tr>
-			<td>Nama</td>
-			<td>Deskripsi</td>
-			<td>Stok</td>
-			<td>Aksi</td>
-		</tr>';
+		<td>Nama</td>
+		<td>Deskripsi</td>
+		<td>Stok</td>
+		<td>Foto</td>
+		<td>Aksi</td>
+	</tr>';
 
 		foreach ($data_barang ->result() as $key => $value) {
 			$konten .= '<tr>
-							<td>'.$value ->nama_barang.'</td>
-							<td>'.$value ->deskripsi.'</td>
-							<td>'.$value ->stok.'</td>
-							<td>Read | <a href="#'.$value->id_barang.'"class="linkHapusBarang">Hapus</a> | <a href="#'.$value->id_barang.'"class="linkEditBarang">Edit</a></td>
-						</tr>';
+			<td>'.$value -> nama_barang.'</td>
+			<td>'.$value -> deskripsi.'</td>
+			<td>'.$value -> stok.'</td>
+			<td><img src="'.base_url().'assets/foto/'.$value->id_barang.'/'.$value->foto_produk.'" width="50"></td>
+			<td>Aksi | <a href="#'.$value->id_barang.'"class="linkHapusBarang">Hapus</a> | Read | <a href="#'.$value->id_barang.'"class="linkEditBarang"</a>Edit</a></td>
+		</tr>'; 
 		}
 
 		$data_json = array(
