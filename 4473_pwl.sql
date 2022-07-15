@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jul 2022 pada 05.54
+-- Waktu pembuatan: 15 Jul 2022 pada 01.01
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `level` set('admin','owner') NOT NULL DEFAULT 'admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `email`, `password`, `nama`, `level`) VALUES
+(1, 'admin@123.com', '356a192b7913b04c54574d18c28d46e6395428ab', 'admin', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -55,10 +62,11 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `deskripsi`, `stok`, `status_delete`, `foto_produk`) VALUES
-(1, 'Nutrisari Jeruk rasa Manggaff', 'Enak pokok e', 20, 0, 'jasjus.JPG'),
-(2, 'Jasjus', 'Hemmmm segerrr', 0, 0, 'jasjus.JPG'),
-(5, 'Laptop', 'Laptop gaming', 0, 0, 'Rog.JPG'),
-(10, 'Papan Tulis', 'dsgfd', 0, 0, 'papan_tulis.JPG');
+(1, 'Nutrisari Jeruk rasa Mangga', 'Enak pokok e', 20, 0, 'jasjus.JPG'),
+(2, 'Jasjus', 'Hemmmm segerrr', 4, 0, 'jasjus.JPG'),
+(5, 'Laptop', 'Laptop gaming', 5, 0, 'Rog.JPG'),
+(10, 'Papan Tulis', 'Bukan Black Board', 50, 0, 'papan_tulis.JPG'),
+(23, 'htrh', 'dshfds', 5, 0, '6010825.jpg');
 
 -- --------------------------------------------------------
 
@@ -184,13 +192,13 @@ ALTER TABLE `stok_bulanan`
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `barang_masuk`
