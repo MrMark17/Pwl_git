@@ -91,11 +91,32 @@ base_url('assets/xtreme_admin_lite/assets/images/favicon.png') ?>"
 					alert(data_str['pesan']);
 
 					if (data_str['sukses'] == 'Ya') {
-						location.replace('http://localhost:8080/pwl_git/client_inventory/index.php/home')
+						setSession(data_str['user']);
 					}
 				},
 				error: function (jqXHR, textStatus, errorMsg) {
 					alert('Error :'+ errorMsg);
+				}
+			});
+		}
+
+		function setSession(user) {
+			var link = "http://localhost:8080/Pwl_git/client_inventory/index.php/Login/setSession";
+		
+			var dataForm = {};
+			dataForm['id_user'] = user['id_admin'];
+			dataForm['email'] = user['email'];
+			dataForm['level'] = user['level'];
+			dataForm['nama'] = user['nama'];
+
+			$.ajax(link, {
+				type: 'POST',
+				data: dataForm,
+				success: function (data, status, xhr) {
+					location.replace('http://localhost:8080/Pwl_git/client_inventory/index.php/Home');
+				},
+				error: function (jqXHR, textStatus, errorMsg) {
+					alert('Error : ' + errorMsg);
 				}
 			});
 		}

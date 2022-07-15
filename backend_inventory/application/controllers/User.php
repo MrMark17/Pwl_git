@@ -23,7 +23,7 @@ class User extends CI_Controller {
 		$cek = $this->User_model->cek_user($email, sha1($password));
 
 		if ($cek->num_rows() > 0) {
-			$data_json = array('sukses' => 'Ya', 'pesan' => 'Sukses Login !!');
+			$data_json = array('sukses' => 'Ya', 'pesan' => 'Sukses Login !!', 'user' => $cek->row_array());
 		} else {
 			$data_json = array('sukses' => 'T', 'pesan' => 'Username dan Password Tidak Terdaftar!!');
 		}

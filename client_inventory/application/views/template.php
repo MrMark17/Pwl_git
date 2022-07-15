@@ -126,8 +126,8 @@
                                 <div class="user-pic"><img src="<?= base_url('assets/xtreme_admin_lite/') ?>assets/images/users/profil.jpg" alt="users" class="rounded-circle" width="40" /></div>
                                 <div class="user-content hide-menu m-l-10">
                                     <a href="javascript:void(0)" class="" id="Userdd" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <h5 class="m-b-0 user-name font-medium">Rizqi Nata Mardika <i class="fa fa-angle-down"></i></h5>
-                                        <span class="op-5 user-email">20.01.4473</span>
+                                        <h5 class="m-b-0 user-name font-medium"><?= $this->session->userdata('nama'); ?><i class="fa fa-angle-down"></i></h5>
+                                        <span class="op-5 user-email"><?= $this->session->userdata('email'); ?></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
                                         <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
@@ -136,7 +136,7 @@
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                        <a class="dropdown-item" href="<?= base_url('login/logout') ?>"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                                     </div>
                                 </div>
                             </div>
