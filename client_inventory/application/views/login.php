@@ -74,7 +74,7 @@ base_url('assets/xtreme_admin_lite/assets/images/favicon.png') ?>"
 		})
 
 		function checkLogin() {
-			var link = "http://localhost:8080/pwl_git/backend_inventory/index.php/User/check_login"
+			var link = "http://localhost:8080/Pwl_git/backend_inventory/index.php/User/check_login"
 
 			var dataForm = {};
 			var allInput = $('.form-user-input');
@@ -91,7 +91,7 @@ base_url('assets/xtreme_admin_lite/assets/images/favicon.png') ?>"
 					alert(data_str['pesan']);
 
 					if (data_str['sukses'] == 'Ya') {
-						location.replace('http://localhost:8080/pwl_git/client_inventory/index.php/home')
+						location.replace('http://localhost:8080/Pwl_git/client_inventory/index.php/home')
 					}
 				},
 				error: function (jqXHR, textStatus, errorMsg) {
